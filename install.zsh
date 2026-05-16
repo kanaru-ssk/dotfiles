@@ -3,9 +3,6 @@
 # dotfilesディレクトリの場所
 DOT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# リンクを貼りたくないファイルを除外リストに入れる
-EXCLUSIONS=( ".git" ".gitignore" ".DS_Store" )
-
 echo "Create symlinks..."
 
 for file in "$DOT_DIR"/.*
@@ -13,7 +10,7 @@ do
   filename=$(basename "$file")
 
   # 除外リストに含まれているかチェック
-  if [[ "${EXCLUSIONS[@]}" =~ "${filename}" ]]; then
+  if [[ ".git .gitignore .DS_Store .config" =~ "${filename}" ]]; then
       continue
   fi
 
@@ -25,6 +22,23 @@ do
   # シンボリックリンクを作成
   ln -snf "$file" "$HOME/$filename"
   echo "link ~/$filename -> $file"
+done
+
+if [[ ! -d ${HOME}/.config ]]; then
+  mkdir ${HOME}/.config
+fi
+for file in "$DOT_DIR"/.config/*
+do
+  filename=$(basename "$file")
+
+  # すでに存在する場合は削除
+  if [ -e "$HOME/.config$filename" ]; then
+    rm -rf "$HOME/.config/$filename"
+  fi
+
+  # シンボリックリンクを作成
+  ln -snf "$file" "$HOME/.config/$filename"
+  echo "link ~/.config/$filename -> $file"
 done
 
 echo "Install brew packages..."
