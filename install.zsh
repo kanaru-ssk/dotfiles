@@ -10,7 +10,7 @@ do
   filename=$(basename "$file")
 
   # 除外リストに含まれているかチェック
-  if [[ ".git .gitignore .DS_Store .config" =~ "${filename}" ]]; then
+  if [[ ".git .gitignore .DS_Store .config .gemini" =~ "${filename}" ]]; then
       continue
   fi
 
@@ -39,6 +39,23 @@ do
   # シンボリックリンクを作成
   ln -snf "$file" "$HOME/.config/$filename"
   echo "link ~/.config/$filename -> $file"
+done
+
+if [[ ! -d ${HOME}/.gemini ]]; then
+  mkdir ${HOME}/.gemini
+fi
+for file in "$DOT_DIR"/.gemini/*
+do
+  filename=$(basename "$file")
+
+  # すでに存在する場合は削除
+  if [ -e "$HOME/.gemini$filename" ]; then
+    rm -rf "$HOME/.gemini/$filename"
+  fi
+
+  # シンボリックリンクを作成
+  ln -snf "$file" "$HOME/.gemini/$filename"
+  echo "link ~/.gemini/$filename -> $file"
 done
 
 echo "Install brew packages..."
