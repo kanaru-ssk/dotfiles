@@ -1,6 +1,7 @@
 brew "coreutils"
 brew "curl"
 brew "gemini-cli"
+brew "gh"
 brew "git"
 brew "mise"
 brew "telnet"
