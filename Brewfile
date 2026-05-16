@@ -2,12 +2,11 @@ brew "coreutils"
 brew "curl"
 brew "gemini-cli"
 brew "git"
+brew "mise"
 brew "telnet"
 brew "wget"
-
 cask "gcloud-cli"
 cask "notunes"
-
 vscode "astro-build.astro-vscode"
 vscode "bierner.markdown-mermaid"
 vscode "biomejs.biome"
