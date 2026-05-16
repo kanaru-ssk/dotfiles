@@ -6,6 +6,8 @@ DOT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # リンクを貼りたくないファイルを除外リストに入れる
 EXCLUSIONS=( ".git" ".gitignore" ".DS_Store" )
 
+echo "Create symlinks..."
+
 for file in "$DOT_DIR"/.*
 do
   filename=$(basename "$file")
@@ -24,5 +26,9 @@ do
   ln -snf "$file" "$HOME/$filename"
   echo "link ~/$filename -> $file"
 done
+
+echo "Install brew packages..."
+
+brew bundle --file=$DOT_DIR/Brewfile
 
 echo "Done!"

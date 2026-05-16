@@ -2,20 +2,27 @@
 
 ## install
 
-Xcode CLIインストール
+Install Xcode CLI
 
 ```sh
 xcode-select --install
 ```
 
-git clone
+Clone repository
 
 ```sh
 git clone https://github.com/kanaru-ssk/dotfiles.git
+cd dotfiles
 ```
 
-インストールスクリプト実行
+Exec install script
 
 ```sh
-zsh ./dotfiles/install.zsh
+zsh install.zsh
+```
+
+## update Brewfile
+
+```sh
+zsh dump-brewfile.zsh
 ```
