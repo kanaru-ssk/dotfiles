@@ -1,5 +1,5 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(mise activate zsh --shims)"
+eval "$(mise activate zsh)"
 
 export PATH="${HOME}/.local/bin:$PATH"
 export PATH="/Users/kanaru/.antigravity/antigravity/bin:$PATH"
