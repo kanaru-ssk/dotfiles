@@ -41,23 +41,6 @@ do
   echo "link ~/.config/$filename -> $file"
 done
 
-if [[ ! -d ${HOME}/.gemini ]]; then
-  mkdir ${HOME}/.gemini
-fi
-for file in "$DOT_DIR"/.gemini/*
-do
-  filename=$(basename "$file")
-
-  # すでに存在する場合は削除
-  if [ -e "$HOME/.gemini$filename" ]; then
-    rm -rf "$HOME/.gemini/$filename"
-  fi
-
-  # シンボリックリンクを作成
-  ln -snf "$file" "$HOME/.gemini/$filename"
-  echo "link ~/.gemini/$filename -> $file"
-done
-
 echo "Install brew packages..."
 
 brew bundle --file=$DOT_DIR/Brewfile
