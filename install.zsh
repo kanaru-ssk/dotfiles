@@ -60,6 +60,6 @@ done
 
 echo "Install brew packages..."
 
-# brew bundle --file=$DOT_DIR/Brewfile
+brew bundle --file=$DOT_DIR/Brewfile
 
 echo "Done!"
