@@ -6,6 +6,12 @@
   "language": "japanese",
   "agentPushNotifEnabled": true,
   "permissions": {
-    "allow": ["Bash(gh:*)", "Bash(git:*)", "Bash(ls:*)", "Bash(npm:*)"]
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(gh:*)",
+      "Bash(git:*)",
+      "Bash(ls:*)",
+      "Bash(npm:*)"
+    ]
   }
 }
