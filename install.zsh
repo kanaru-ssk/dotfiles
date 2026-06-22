@@ -1,65 +1,57 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-# dotfilesディレクトリの場所
-DOT_DIR="$(cd "$(dirname "$0")" && pwd)"
+# dotfiles を $HOME にシンボリックリンクし、Homebrew パッケージを導入する。
 
-echo "Create symlinks..."
+set -e
+setopt null_glob
 
-for file in "$DOT_DIR"/.*
-do
-  filename=$(basename "$file")
+readonly DOT_DIR="${0:A:h}"
+readonly BACKUP_DIR="$HOME/.dotfiles_backup/$(date +%Y%m%d%H%M%S)"
 
-  # 除外リストに含まれているかチェック
-  if [[ ".git .gitignore .DS_Store .config .agents" =~ "${filename}" ]]; then
-      continue
+# シンボリックリンクの対象から外す名前(ファイル名・ディレクトリ名)
+readonly EXCLUDES=(.git .DS_Store)
+
+# 相対パスのいずれかのセグメントが EXCLUDES に一致したら除外
+is_excluded() {
+  local part
+  for part in ${(s:/:)1}; do
+    (( ${EXCLUDES[(Ie)$part]} )) && return 0
+  done
+  return 1
+}
+
+# $1: リンク元(実体) $2: リンク先
+link_item() {
+  local src="$1" dest="$2"
+
+  # 既に正しいリンク(同じ実体を指すシンボリックリンク)が張られていれば何もしない。
+  if [[ -L "$dest" && "$(readlink "$dest")" == "$src" ]]; then
+    echo "  skip    $dest"
+    return
   fi
 
-  # すでに存在する場合は削除
-  if [ -e "$HOME/$filename" ]; then
-    rm -rf "$HOME/$filename"
+  if [[ -e "$dest" || -L "$dest" ]]; then
+    # $HOME からの相対パスを保ったまま退避し、basename 衝突による上書きを防ぐ
+    local backup="$BACKUP_DIR/${dest#$HOME/}"
+    mkdir -p "$(dirname "$backup")"
+    mv "$dest" "$backup"
+    echo "  backup  $dest -> $backup"
   fi
 
-  # シンボリックリンクを作成
-  ln -snf "$file" "$HOME/$filename"
-  echo "link ~/$filename -> $file"
+  ln -sfn "$src" "$dest"
+  echo "  link    $dest -> $src"
+}
+
+echo "==> Linking dotfiles to $HOME"
+for src in "$DOT_DIR"/.*(.D) "$DOT_DIR"/.*/**/*(.D); do
+  rel="${src#$DOT_DIR/}"
+  is_excluded "$rel" && continue
+  dest="$HOME/$rel"
+  mkdir -p "$(dirname "$dest")"
+  link_item "$src" "$dest"
 done
 
-if [[ ! -d ${HOME}/.config ]]; then
-  mkdir ${HOME}/.config
-fi
-for file in "$DOT_DIR"/.config/*
-do
-  filename=$(basename "$file")
-
-  # すでに存在する場合は削除
-  if [ -e "$HOME/.config$filename" ]; then
-    rm -rf "$HOME/.config/$filename"
-  fi
-
-  # シンボリックリンクを作成
-  ln -snf "$file" "$HOME/.config/$filename"
-  echo "link ~/.config/$filename -> $file"
-done
-
-if [[ ! -d ${HOME}/.agents ]]; then
-  mkdir ${HOME}/.agents
-fi
-for file in "$DOT_DIR"/.agents/*
-do
-  filename=$(basename "$file")
-
-  # すでに存在する場合は削除
-  if [ -e "$HOME/.agents/$filename" ]; then
-    rm -rf "$HOME/.agents/$filename"
-  fi
-
-  # シンボリックリンクを作成
-  ln -snf "$file" "$HOME/.agents/$filename"
-  echo "link ~/.agents/$filename -> $file"
-done
-
-echo "Install brew packages..."
-
-brew bundle --file=$DOT_DIR/Brewfile
+echo "==> Installing Homebrew packages"
+brew bundle --file="$DOT_DIR/Brewfile"
 
 echo "Done!"
