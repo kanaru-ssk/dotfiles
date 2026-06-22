@@ -1,0 +1,11 @@
+{
+  "model": "opus",
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "theme": "dark",
+  "language": "japanese",
+  "agentPushNotifEnabled": true,
+  "permissions": {
+    "allow": ["Bash(gh:*)", "Bash(git:*)", "Bash(ls:*)", "Bash(npm:*)"]
+  }
+}
