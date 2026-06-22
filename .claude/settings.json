@@ -11,6 +11,8 @@
       "Bash(gh:*)",
       "Bash(git:*)",
       "Bash(ls:*)",
+      "Bash(mise:*)",
+      "Bash(ncu:*)",
       "Bash(npm:*)"
     ]
   }
