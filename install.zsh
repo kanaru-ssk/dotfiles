@@ -54,4 +54,7 @@ done
 echo "==> Installing Homebrew packages"
 brew bundle --file="$DOT_DIR/Brewfile"
 
+echo "==> Installing mise tools"
+mise install
+
 echo "Done!"
