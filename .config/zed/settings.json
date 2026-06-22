@@ -7,6 +7,10 @@
   },
 
   // 非表示
+  "status_bar": {
+    "cursor_position_button": false,
+    "active_language_button": false,
+  },
   "debugger": {
     "button": false,
   },
@@ -14,6 +18,12 @@
     "button": false,
   },
   "global_lsp_settings": {
+    "button": false,
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "outline_panel": {
     "button": false,
   },
   "agent": {
