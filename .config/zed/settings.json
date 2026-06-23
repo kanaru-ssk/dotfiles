@@ -27,6 +27,7 @@
     "button": false,
   },
   "agent": {
+    "enable_feedback": false,
     "button": false,
     "favorite_models": [],
     "model_parameters": [],
