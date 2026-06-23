@@ -1,10 +1,4 @@
 {
-  "model": "opus",
-  "effortLevel": "high",
-  "tui": "fullscreen",
-  "theme": "dark",
-  "language": "japanese",
-  "agentPushNotifEnabled": true,
   "permissions": {
     "allow": [
       "Bash(cat:*)",
@@ -15,5 +9,11 @@
       "Bash(ncu:*)",
       "Bash(npm:*)"
     ]
-  }
+  },
+  "model": "opus",
+  "language": "japanese",
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "theme": "dark",
+  "agentPushNotifEnabled": true
 }

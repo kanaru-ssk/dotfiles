@@ -1,0 +1,8 @@
+# ghostty +show-config --default --docs
+
+font-size = 14
+window-padding-x = 8
+window-padding-y = 8
+cursor-style = bar
+window-save-state = always
+mouse-hide-while-typing = true
