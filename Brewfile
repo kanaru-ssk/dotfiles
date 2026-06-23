@@ -1,5 +1,6 @@
 brew "gh"
 brew "git"
+brew "jq"
 brew "mise"
 cask "bitwarden"
 cask "claude"
