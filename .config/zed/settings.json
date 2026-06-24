@@ -1,4 +1,7 @@
 {
+  "terminal": {
+    "cursor_shape": "bar",
+  },
   "theme": "Ayu Dark",
 
   // レイアウト
