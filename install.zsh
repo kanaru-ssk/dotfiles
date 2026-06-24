@@ -43,7 +43,7 @@ link_item() {
 }
 
 echo "==> Linking dotfiles to $HOME"
-for src in "$DOT_DIR"/.*(.D) "$DOT_DIR"/.*/**/*(.D); do
+for src in $DOT_DIR/.*(.D) $DOT_DIR/.*/**/*(.D); do
   rel="${src#$DOT_DIR/}"
   is_excluded "$rel" && continue
   dest="$HOME/$rel"
