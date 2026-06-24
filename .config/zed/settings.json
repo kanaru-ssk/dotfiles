@@ -1,13 +1,16 @@
 {
-  "terminal": {
-    "cursor_shape": "bar",
-  },
   "theme": "Ayu Dark",
 
   // レイアウト
   "project_panel": {
     "dock": "left",
   },
+
+  "terminal": {
+    "cursor_shape": "bar",
+  },
+
+  "cli_default_open_behavior": "new_window", // zedコマンドは別ウィンドウで開く
 
   // 非表示
   "status_bar": {
@@ -35,6 +38,4 @@
     "favorite_models": [],
     "model_parameters": [],
   },
-
-  "cli_default_open_behavior": "new_window", // zedコマンドは別ウィンドウで開く
 }
