@@ -1,3 +1,4 @@
+brew "ffmpeg"
 brew "gh"
 brew "git"
 brew "jq"
