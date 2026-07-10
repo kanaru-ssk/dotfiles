@@ -38,4 +38,7 @@
     "favorite_models": [],
     "model_parameters": [],
   },
+  "search": {
+    "button": false
+  },
 }
