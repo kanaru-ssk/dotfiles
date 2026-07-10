@@ -14,6 +14,7 @@
   "cli_default_open_behavior": "new_window",
 
   // デフォルトフォーマッターの設定
+  "format_on_save": "on",
  	"languages": {
 		"CSS": { "formatter": { "language_server": { "name": "biome" } } },
 		"JSON": { "formatter": { "language_server": { "name": "biome" } } },
