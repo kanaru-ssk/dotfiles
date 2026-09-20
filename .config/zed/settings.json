@@ -1,22 +1,28 @@
 {
-  "theme": "Ayu Dark",
+	"theme": "Ayu Dark",
 
-  // レイアウト
-  "project_panel": {
-    "dock": "left",
-  },
+	// レイアウト
+	"project_panel": {
+		"dock": "left"
+	},
 
-  "terminal": {
-    "cursor_shape": "bar",
-  },
+	"terminal": {
+		"cursor_shape": "bar"
+	},
 
-  // zedコマンドは別ウィンドウで開く
-  "cli_default_open_behavior": "new_window",
+	// zedコマンドは別ウィンドウで開く
+	"cli_default_open_behavior": "new_window",
 
-  // デフォルトフォーマッターの設定
-  "format_on_save": "on",
- 	"languages": {
-		"CSS": { "formatter": { "language_server": { "name": "biome" } } },
+	// デフォルトフォーマッターの設定
+	"format_on_save": "on",
+	"languages": {
+		"CSS": {
+			"language_servers": [
+				"tailwindcss-intellisense-css",
+				"!vscode-css-language-server"
+			],
+			"formatter": { "language_server": { "name": "biome" } }
+		},
 		"JSON": { "formatter": { "language_server": { "name": "biome" } } },
 		"JSONC": { "formatter": { "language_server": { "name": "biome" } } },
 		"JavaScript": { "formatter": { "language_server": { "name": "biome" } } },
@@ -24,33 +30,33 @@
 		"TypeScript": { "formatter": { "language_server": { "name": "biome" } } }
 	},
 
-  // 非表示
-  "status_bar": {
-    "cursor_position_button": false,
-    "active_language_button": false,
-  },
-  "debugger": {
-    "button": false,
-  },
-  "diagnostics": {
-    "button": false,
-  },
-  "global_lsp_settings": {
-    "button": false,
-  },
-  "collaboration_panel": {
-    "button": false,
-  },
-  "outline_panel": {
-    "button": false,
-  },
-  "agent": {
-    "enable_feedback": false,
-    "button": false,
-    "favorite_models": [],
-    "model_parameters": [],
-  },
-  "search": {
-    "button": false
-  },
+	// 非表示
+	"status_bar": {
+		"cursor_position_button": false,
+		"active_language_button": false
+	},
+	"debugger": {
+		"button": false
+	},
+	"diagnostics": {
+		"button": false
+	},
+	"global_lsp_settings": {
+		"button": false
+	},
+	"collaboration_panel": {
+		"button": false
+	},
+	"outline_panel": {
+		"button": false
+	},
+	"agent": {
+		"enable_feedback": false,
+		"button": false,
+		"favorite_models": [],
+		"model_parameters": []
+	},
+	"search": {
+		"button": false
+	}
 }
