@@ -31,6 +31,7 @@
 	},
 
 	// 非表示
+	"disable_ai": true,
 	"status_bar": {
 		"cursor_position_button": false,
 		"active_language_button": false
