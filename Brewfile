@@ -1,3 +1,4 @@
+brew "curl"
 brew "ffmpeg"
 brew "gh"
 brew "git"
